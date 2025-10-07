@@ -18,7 +18,7 @@
 
 ---
 
-## ⚙️ Technologies & Frameworks
+##  Technologies & Frameworks
 
 | Component | Technology | Purpose |
 |------------|-------------|----------|
@@ -31,7 +31,7 @@
 | **PDF (Optional)** | pdfkit / html-pdf | Generate downloadable reports |
 ---
 
-## 💡 Key Features & Functionality
+##  Key Features & Functionality
 
 ### 1️ Quick Simulation
 - Accepts invoice volume, staff size, wages, error rate, etc.
@@ -54,5 +54,4 @@
 - Backend constants ensure automation **always shows positive ROI**.
 - Bias factor `min_roi_boost_factor` amplifies savings slightly.
 
----
 
