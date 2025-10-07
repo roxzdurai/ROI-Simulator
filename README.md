@@ -20,19 +20,20 @@
 
 ## ⚙️ Technologies & Frameworks
 
-| Layer | Technology | Purpose |
-|-------|-------------|----------|
-| **Frontend** | React.js (Vite/CRA) | Build interactive UI |
-| **Backend** | FastAPI (Python 3.10+) | Handle API logic and calculations |
-| **Database** | MongoDB (Atlas or Local) | Persist scenarios and leads |
-| **Styling** | CSS / Tailwind | Responsive and clean interface |
-| **Deployment** | Render / Vercel | Hosting (optional) |
-
+| Component | Technology | Purpose |
+|------------|-------------|----------|
+| **Runtime** | Node.js | Execute backend JavaScript |
+| **Framework** | Express.js | REST API server |
+| **Database** | MongoDB (Mongoose ODM) | Persist scenarios and email leads |
+| **Validation** | Native JS validation  | Validate incoming data |
+| **Environment** | dotenv | Manage environment variables |
+| **CORS** | cors | Allow frontend-backend communication |
+| **PDF (Optional)** | pdfkit / html-pdf | Generate downloadable reports |
 ---
 
 ## 💡 Key Features & Functionality
 
-### 1️⃣ Quick Simulation
+### 1️ Quick Simulation
 - Accepts invoice volume, staff size, wages, error rate, etc.
 - Computes and displays:
   - Monthly savings
@@ -40,30 +41,18 @@
   - ROI (%)
   - Cumulative and net savings
 
-### 2️⃣ Scenario Management
+### 2️ Scenario Management
 - Save simulations by name.
 - Retrieve, update, and delete saved scenarios.
 
-### 3️⃣ Report Generation (Email-Gated)
+### 3️ Report Generation (Email-Gated)
 - Requires email before download.
 - Generates and serves HTML/PDF report.
 - Email recorded in `leads` collection for analytics.
 
-### 4️⃣ Favorable ROI Logic
+### 4️ Favorable ROI Logic
 - Backend constants ensure automation **always shows positive ROI**.
 - Bias factor `min_roi_boost_factor` amplifies savings slightly.
 
 ---
 
-## 🧮 Example Calculation Logic
-
-```python
-labor_cost_manual = num_ap_staff * hourly_wage * avg_hours_per_invoice * monthly_invoice_volume
-auto_cost = monthly_invoice_volume * automated_cost_per_invoice
-error_savings = (error_rate_manual - error_rate_auto) * monthly_invoice_volume * error_cost
-monthly_savings = ((labor_cost_manual + error_savings) - auto_cost) * min_roi_boost_factor
-
-cumulative_savings = monthly_savings * time_horizon_months
-net_savings = cumulative_savings - one_time_implementation_cost
-payback_months = one_time_implementation_cost / monthly_savings
-roi_percentage = (net_savings / one_time_implementation_cost) * 100
